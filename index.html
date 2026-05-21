@@ -1,9 +1,1109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>PTS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Precision Tech Solutions — Professional GPS installation, dashcams, CarPlay, lighting and sound systems. On-site, expert installation.">
+<title>Precision Tech Solutions — Installation Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1F3A;
+  --cyan:#00B7FF;
+  --cyan-10:rgba(0,183,255,.10);
+  --border-cyan:rgba(0,183,255,.28);
+  --text:#0B1F3A;
+  --text-2:#3a4d66;
+  --text-3:#6b7d96;
+  --bg:#ffffff;
+  --bg2:#f4f6f9;
+  --bg3:#e8ecf3;
+  --border:rgba(11,31,58,.10);
+  --lb:#E8F4FD;
+  --green:#2ECC71;
+  --w100:#ffffff;
+  --w55:rgba(255,255,255,.55);
+  --w30:rgba(255,255,255,.30);
+  --w10:rgba(255,255,255,.10);
+  --w05:rgba(255,255,255,.05);
+  --w03:rgba(255,255,255,.03);
+  --ff:'Inter',sans-serif;
+  /* Touch-friendly minimum sizes */
+  --touch-min:44px;
+}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--ff);font-weight:300;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body.drawer-open{overflow:hidden;position:fixed;width:100%}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 5vw;display:flex;align-items:center;justify-content:space-between;background:rgba(11,31,58,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.08);transition:background .3s;min-height:60px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-size:.95rem;font-weight:700;flex-shrink:1;min-width:0;overflow:hidden}
+.logo-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.logo-mark{width:34px;height:34px;min-width:34px;background:var(--cyan);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:17px;height:17px}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.86rem;font-weight:400;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-book{background:var(--cyan);color:var(--navy);border:none;padding:9px 18px;border-radius:7px;font-family:var(--ff);font-weight:600;font-size:.82rem;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;min-height:var(--touch-min)}
+.nav-book:hover{background:#2ac5ff;transform:translateY(-1px)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+/* Hamburger */
+.burger{display:flex;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:10px;border-radius:8px;transition:all .2s;flex-shrink:0;min-width:var(--touch-min);min-height:var(--touch-min);align-items:center;background:var(--cyan)}
+.burger:hover{background:#2ac5ff;transform:translateY(-1px)}
+.burger span{width:20px;height:1.5px;background:var(--navy);border-radius:2px;transition:all .3s;display:block}
+.burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+/* Drawer */
+.nav-drawer{
+  position:fixed;top:0;right:-340px;bottom:0;width:300px;max-width:88vw;
+  background:rgba(9,18,35,.98);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  z-index:199;
+  transition:right .32s cubic-bezier(.22,1,.36,1),visibility 0s linear .32s;
+  display:flex;flex-direction:column;
+  padding:80px 28px 40px;
+  border-left:1px solid rgba(255,255,255,.08);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  visibility:hidden;
+}
+.nav-drawer.open{right:0;visibility:visible;transition:right .32s cubic-bezier(.22,1,.36,1),visibility 0s linear 0s}
+.nav-drawer-overlay{
+  position:fixed;inset:0;z-index:198;
+  background:rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;
+  transition:opacity .32s;
+}
+.nav-drawer-overlay.open{opacity:1;pointer-events:all}
+.nd-label{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.7rem;margin-top:1.4rem}
+.nd-label:first-of-type{margin-top:0}
+.nav-drawer a{
+  display:flex;align-items:center;gap:10px;
+  color:rgba(255,255,255,.75);text-decoration:none;
+  font-size:.94rem;font-weight:400;
+  padding:11px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s;
+  min-height:var(--touch-min);
+}
+.nav-drawer a:last-of-type{border-bottom:none}
+.nav-drawer a:hover{color:#fff}
+.nav-drawer a svg{width:16px;height:16px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;opacity:.7}
+.nd-cta{
+  margin-top:auto;padding-top:24px;
+  background:var(--cyan);color:var(--navy);
+  border:none;padding:14px 20px;border-radius:9px;
+  font-family:var(--ff);font-weight:600;font-size:.94rem;
+  cursor:pointer;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:all .2s;min-height:var(--touch-min);
+}
+.nd-cta:hover{background:#2ac5ff}
+.nd-cta svg{width:15px;height:15px;stroke:var(--navy);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── HERO ── */
+#hero{min-height:100svh;display:flex;align-items:center;padding:100px 5vw 70px;position:relative;overflow:hidden;background:var(--navy)}
+.hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 65% 45%,rgba(0,183,255,.06) 0%,transparent 65%),radial-gradient(ellipse 35% 40% at 15% 75%,rgba(0,183,255,.03) 0%,transparent 55%)}
+.hero-grid-lines{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,183,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,183,255,.025) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 75% 65% at 60% 42%,black 10%,transparent 75%)}
+.hero-inner{max-width:1160px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(0,183,255,.1);border:1px solid rgba(0,183,255,.28);border-radius:100px;padding:5px 15px;font-size:.7rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.3rem;opacity:0;animation:fu .7s .1s forwards}
+.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--cyan);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-size:clamp(2.1rem,5vw,3.8rem);font-weight:800;line-height:1.07;letter-spacing:-.03em;margin-bottom:1.2rem;opacity:0;animation:fu .75s .25s forwards}
+.h1-grey{color:rgba(255,255,255,.55)}
+h1 .h1-cyan{color:var(--cyan)}
+.hero-sub{font-size:clamp(.9rem,2vw,1rem);color:rgba(255,255,255,.6);max-width:460px;line-height:1.75;font-weight:300;margin-bottom:2rem;opacity:0;animation:fu .75s .4s forwards}
+.hero-ctas{display:flex;gap:.75rem;flex-wrap:wrap;opacity:0;animation:fu .75s .55s forwards}
+.btn-main{background:var(--cyan);color:var(--navy);border:none;padding:13px 24px;border-radius:9px;font-family:var(--ff);font-weight:600;font-size:.94rem;cursor:pointer;transition:all .22s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;min-height:var(--touch-min)}
+.btn-main:hover{background:#2ac5ff;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,183,255,.28)}
+.btn-wa{background:rgba(46,204,113,.1);color:#2ECC71;border:1px solid rgba(46,204,113,.28);padding:13px 20px;border-radius:9px;font-family:var(--ff);font-weight:400;font-size:.94rem;cursor:pointer;transition:all .22s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;min-height:var(--touch-min)}
+.btn-wa:hover{background:rgba(46,204,113,.18)}
+.btn-wa svg,.btn-main svg{width:17px;height:17px;flex-shrink:0}
+.hero-trust{display:flex;gap:1.4rem;margin-top:2.4rem;opacity:0;animation:fu .75s .7s forwards;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:.78rem;color:rgba(255,255,255,.55)}
+.trust-item svg{width:13px;height:13px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+/* hero panel */
+.hero-panel{opacity:0;animation:fu .75s .85s forwards}
+.service-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden}
+.sc-header{background:rgba(0,183,255,.07);border-bottom:1px solid rgba(255,255,255,.08);padding:14px 18px;display:flex;align-items:center;gap:12px}
+.sc-icon{width:36px;height:36px;background:var(--cyan);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sc-icon svg{width:18px;height:18px}
+.sc-head-text h4{font-size:.88rem;font-weight:700;margin-bottom:2px;color:#fff}
+.sc-head-text p{font-size:.72rem;color:rgba(255,255,255,.55)}
+.sc-body{padding:16px 18px}
+.sc-step{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.sc-step:last-child{border-bottom:none;padding-bottom:0}
+.sc-num{width:22px;height:22px;border-radius:6px;background:rgba(0,183,255,.1);border:1px solid rgba(0,183,255,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.68rem;font-weight:700;color:var(--cyan)}
+.sc-step-text h5{font-size:.8rem;font-weight:500;margin-bottom:2px;color:#fff}
+.sc-step-text p{font-size:.71rem;color:rgba(255,255,255,.55);line-height:1.5}
+.sc-footer{padding:12px 18px;background:rgba(0,183,255,.05);border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between}
+.sf-label{font-size:.68rem;color:rgba(255,255,255,.5)}
+.sf-val{font-size:.86rem;font-weight:700;color:var(--green)}
+@keyframes fu{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ── UTILITY ── */
+.sec{padding:80px 5vw}
+.inner{max-width:1160px;margin:0 auto}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
+.tag::before{content:'';width:18px;height:1px;background:var(--cyan);flex-shrink:0}
+h2{font-size:clamp(1.75rem,3.5vw,2.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:.9rem}
+.lead{font-size:.96rem;color:var(--text-3);max-width:500px;line-height:1.75;font-weight:300}
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.fade-up.visible{opacity:1;transform:none}
+.fade-up.d1{transition-delay:.08s}
+.fade-up.d2{transition-delay:.16s}
+.fade-up.d3{transition-delay:.24s}
+.fade-up.d4{transition-delay:.32s}
+.fade-up.d5{transition-delay:.4s}
+.fade-left{opacity:0;transform:translateX(-36px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.fade-left.visible{opacity:1;transform:none}
+.fade-right{opacity:0;transform:translateX(36px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.fade-right.visible{opacity:1;transform:none}
+.scale-in{opacity:0;transform:scale(.95);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.scale-in.visible{opacity:1;transform:scale(1)}
+
+/* ── PHOTO CARD ── */
+.photo-card{
+  position:relative;border-radius:16px;overflow:hidden;
+  aspect-ratio:4/3;background:#0B1F3A;
+}
+.photo-card img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;transition:transform .6s cubic-bezier(.22,1,.36,1);
+  filter:brightness(.88);
+}
+.photo-card:hover img{transform:scale(1.04)}
+.photo-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,31,58,.72) 0%,transparent 55%);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:18px;
+}
+.photo-card-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:4px}
+.photo-card-title{font-size:1rem;font-weight:700;color:#fff;line-height:1.25}
+
+/* ── PHOTO GRID LAYOUTS ── */
+.pg-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:3rem}
+.pg-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:3rem}
+.pg-hero{display:grid;grid-template-columns:1.35fr 1fr;gap:14px;margin-top:3.5rem}
+.pg-hero .photo-card:first-child{aspect-ratio:3/2}
+.pg-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:3rem}
+
+/* ── SECTION BACKGROUNDS ── */
+#over{background:var(--lb)}
+#diensten{background:#fff}
+#diensten h2{color:var(--text)}
+#diensten .lead{color:var(--text-3)}
+#hoe{background:var(--navy)}
+#hoe h2{color:#fff}
+#hoe .lead{color:rgba(255,255,255,.65)}
+#hoe .tag{color:var(--cyan)}
+#voordelen{background:var(--lb)}
+#voordelen h2{color:var(--text)}
+#voordelen .tag{color:var(--cyan)}
+#afspraak{background:#fff}
+#afspraak h2{color:var(--text)}
+#afspraak .tag{color:var(--cyan)}
+#contact{background:#0B7EC4}
+#contact h2{color:#fff}
+#contact .lead{color:rgba(255,255,255,.75)}
+#contact .tag{color:#7dd8ff}
+
+/* ── OVER ONS ── */
+.over-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.over-blocks{display:flex;flex-direction:column;gap:.8rem;margin-top:1.8rem}
+.over-block{display:flex;gap:14px;padding:16px 18px;background:#fff;border:1px solid var(--border);border-radius:13px;transition:all .3s;box-shadow:0 1px 4px rgba(11,31,58,.05)}
+.over-block:hover{border-color:var(--border-cyan);background:#f0faff;transform:translateX(4px)}
+.ob-icon{width:36px;height:36px;min-width:36px;border-radius:9px;background:var(--cyan-10);border:1px solid var(--border-cyan);display:flex;align-items:center;justify-content:center}
+.ob-icon svg{width:16px;height:16px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ob-text h4{font-size:.86rem;font-weight:600;margin-bottom:3px;color:var(--text)}
+.ob-text p{font-size:.77rem;color:var(--text-3);line-height:1.55}
+.over-visual{display:flex;flex-direction:column;gap:.8rem}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.stat-box{background:#fff;border:1px solid var(--border);border-radius:13px;padding:20px 18px;box-shadow:0 1px 4px rgba(11,31,58,.05);transition:border-color .3s}
+.stat-box:hover{border-color:var(--border-cyan)}
+.sb-num{font-size:1.9rem;font-weight:800;color:var(--text);letter-spacing:-.03em;line-height:1;margin-bottom:4px}
+.sb-num span{color:var(--cyan)}
+.sb-label{font-size:.74rem;color:var(--text-3)}
+.partner-strip{background:#fff;border:1px solid var(--border);border-radius:13px;padding:14px 18px;box-shadow:0 1px 4px rgba(11,31,58,.05)}
+.ps-title{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:10px;font-weight:500}
+.ps-badges{display:flex;gap:6px;flex-wrap:wrap}
+.ps-badge{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:5px 11px;font-size:.71rem;font-weight:500;color:var(--text-3)}
+
+/* ── SERVICE SHOWCASE ── */
+.showcase{padding:0}
+.showcase-item{display:grid;grid-template-columns:1fr 1fr;min-height:520px}
+.showcase-item.reverse{direction:rtl}
+.showcase-item.reverse > *{direction:ltr}
+.si-media{position:relative;overflow:hidden;background:var(--navy)}
+.si-media img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.85);transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.showcase-item:hover .si-media img{transform:scale(1.03)}
+.si-media-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,31,58,.35) 0%,transparent 60%)}
+.si-num{position:absolute;top:24px;left:24px;font-size:3.5rem;font-weight:800;color:rgba(255,255,255,.12);letter-spacing:-.04em;line-height:1}
+.si-content{display:flex;flex-direction:column;justify-content:center;padding:56px 52px}
+.showcase-item.reverse .si-content{padding:56px 52px}
+.si-tag{display:inline-flex;align-items:center;gap:7px;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:.9rem}
+.si-tag::before{content:'';width:16px;height:1px;background:var(--cyan)}
+.si-content h3{font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:.9rem;color:var(--text)}
+.si-content p{font-size:.92rem;color:var(--text-3);line-height:1.75;font-weight:300;max-width:400px}
+.si-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:1.3rem}
+.si-pill{background:var(--cyan-10);border:1px solid var(--border-cyan);border-radius:100px;padding:5px 13px;font-size:.71rem;font-weight:500;color:var(--text-2)}
+
+.showcase-dark .si-content{background:var(--navy)}
+.showcase-dark .si-content h3{color:#fff}
+.showcase-dark .si-content p{color:rgba(255,255,255,.6)}
+.showcase-dark .si-pill{background:rgba(0,183,255,.12);border-color:rgba(0,183,255,.25);color:rgba(255,255,255,.8)}
+
+/* ── PHOTO MOSAIC ── */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:220px 220px;gap:10px;margin-top:3.5rem}
+.mosaic .photo-card:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:unset}
+.mosaic .photo-card{aspect-ratio:unset}
+
+/* ── HOW IT WORKS ── */
+.hoe-inner{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start;margin-top:3rem}
+.steps-list{display:flex;flex-direction:column}
+.step-item{display:flex;align-items:flex-start;gap:1.1rem;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.step-item:last-child{border-bottom:none}
+.step-left{display:flex;flex-direction:column;align-items:center}
+.step-circle{width:32px;height:32px;border-radius:50%;flex-shrink:0;background:rgba(0,183,255,.12);border:1.5px solid rgba(0,183,255,.3);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--cyan)}
+.step-line{width:1.5px;flex:1;background:rgba(255,255,255,.12);margin:6px 0}
+.step-item:last-child .step-line{display:none}
+.step-content{padding-top:3px}
+.step-content h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem;color:#fff}
+.step-content p{font-size:.82rem;color:rgba(255,255,255,.58);line-height:1.65}
+.step-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(0,183,255,.1);border:1px solid rgba(0,183,255,.22);border-radius:5px;padding:3px 9px;font-size:.65rem;font-weight:500;color:var(--cyan);margin-top:7px}
+.hoe-visual{background:#fff;border:1px solid rgba(255,255,255,.15);border-radius:18px;overflow:hidden;position:sticky;top:80px;box-shadow:0 4px 40px rgba(0,0,0,.2)}
+.hv-top{background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.hv-dot-row{display:flex;gap:5px}
+.hv-dot{width:9px;height:9px;border-radius:50%}
+.hv-title{font-size:.68rem;color:var(--text-3);font-weight:500;letter-spacing:.05em;margin-left:4px}
+.hv-body{padding:16px}
+.hv-info-row{display:flex;justify-content:space-between;align-items:center;padding:9px 11px;background:var(--bg2);border-radius:8px;margin-bottom:7px}
+.hir-label{font-size:.72rem;color:var(--text-3)}
+.hir-val{font-size:.78rem;font-weight:500;color:var(--text-2)}
+.hv-timeline{margin-top:13px}
+.ht-label{font-size:.65rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);margin-bottom:8px;font-weight:500}
+.ht-bar-row{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.ht-name{font-size:.71rem;color:var(--text-3);width:72px;flex-shrink:0}
+.ht-track{flex:1;height:5px;background:var(--bg3);border-radius:100px;overflow:hidden}
+.ht-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--cyan),#0090d4)}
+.ht-time{font-size:.68rem;color:var(--text-3);width:30px;text-align:right}
+.hv-note{margin-top:11px;padding:10px 12px;background:rgba(46,204,113,.07);border:1px solid rgba(46,204,113,.18);border-radius:8px;font-size:.74rem;color:var(--green);display:flex;align-items:center;gap:8px}
+.hv-note svg{width:12px;height:12px;stroke:var(--green);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+
+/* ── VOORDELEN ── */
+.voordelen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.8rem}
+.voordeel{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 22px;transition:all .3s;cursor:default;box-shadow:0 1px 4px rgba(11,31,58,.05)}
+.voordeel:hover{border-color:var(--border-cyan);background:#f0faff;transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,183,255,.12)}
+.vd-icon{width:42px;height:42px;background:var(--cyan-10);border:1px solid var(--border-cyan);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.vd-icon svg{width:19px;height:19px;stroke:var(--cyan);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.voordeel h3{font-size:.93rem;font-weight:700;margin-bottom:.4rem;color:var(--text)}
+.voordeel p{font-size:.8rem;color:var(--text-3);line-height:1.65}
+
+/* ── AFSPRAAK ── */
+.afspraak-layout{display:grid;grid-template-columns:1fr 460px;gap:5rem;align-items:start}
+.af-info h3{font-size:1.45rem;font-weight:800;margin-bottom:.8rem;letter-spacing:-.02em;color:var(--text)}
+.af-info p{font-size:.88rem;color:var(--text-3);line-height:1.75;margin-bottom:1.8rem}
+.af-why{display:flex;flex-direction:column;gap:.7rem}
+.af-why-item{display:flex;align-items:center;gap:10px;font-size:.83rem;color:var(--text-2)}
+.af-check{width:22px;height:22px;min-width:22px;border-radius:6px;background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.28);display:flex;align-items:center;justify-content:center}
+.af-check svg{width:11px;height:11px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.af-form{background:#fff;border:1px solid var(--border);border-radius:20px;padding:30px;box-shadow:0 2px 20px rgba(11,31,58,.07)}
+.af-form-title{font-size:1.02rem;font-weight:700;margin-bottom:.25rem;color:var(--text)}
+.af-form-sub{font-size:.78rem;color:var(--text-3);margin-bottom:1.4rem}
+.frow{margin-bottom:.8rem}
+.frow label{display:block;font-size:.68rem;font-weight:500;letter-spacing:.06em;color:var(--text-3);text-transform:uppercase;margin-bottom:6px}
+.frow input,.frow select,.frow textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:11px 13px;color:var(--text);font-family:var(--ff);font-size:.86rem;font-weight:300;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none;min-height:var(--touch-min)}
+.frow input:focus,.frow select:focus,.frow textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,183,255,.1)}
+.frow input::placeholder,.frow textarea::placeholder{color:var(--text-3)}
+.frow select{cursor:pointer;color:var(--text-2);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7d96' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+.frow select option{background:#fff;color:var(--text)}
+.frow textarea{height:80px;resize:none;min-height:80px}
+.frow-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.fsubmit{width:100%;background:var(--cyan);color:var(--navy);border:none;padding:14px;border-radius:9px;font-family:var(--ff);font-weight:600;font-size:.92rem;cursor:pointer;transition:all .22s;margin-top:.25rem;display:flex;align-items:center;justify-content:center;gap:7px;min-height:var(--touch-min)}
+.fsubmit:hover{background:#2ac5ff;transform:translateY(-1px);box-shadow:0 6px 22px rgba(0,183,255,.25)}
+.fsubmit svg{width:14px;height:14px;stroke:var(--navy);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fnote{font-size:.67rem;color:var(--text-3);text-align:center;margin-top:.75rem}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2.2rem}
+.contact-card{background:#fff;border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:24px 22px;transition:all .25s;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:.6rem;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+.contact-card:hover{border-color:#00B7FF;background:#f0faff;transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.15)}
+.cc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:.15rem}
+.cc-icon svg{width:20px;height:20px}
+.contact-card h4{font-size:.93rem;font-weight:700;color:var(--text)}
+.contact-card p{font-size:.78rem;color:var(--text-3);line-height:1.55}
+.contact-card span{font-size:.8rem;color:var(--cyan);font-weight:500}
+.contact-form-wrap{max-width:680px;margin:0 auto}
+.contact-form-wrap .frow input:focus,
+.contact-form-wrap .frow select:focus,
+.contact-form-wrap .frow textarea:focus{border-color:var(--cyan)}
+.contact-form-wrap .frow input::placeholder,
+.contact-form-wrap .frow textarea::placeholder{color:rgba(255,255,255,.3)}
+
+/* ── FOOTER ── */
+footer{padding:44px 5vw 30px;background:var(--navy);border-top:1px solid rgba(255,255,255,.07)}
+.footer-inner{max-width:1160px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:2rem;flex-wrap:wrap;gap:2rem}
+.footer-brand p{font-size:.8rem;color:rgba(255,255,255,.5);max-width:250px;margin-top:.6rem;line-height:1.6}
+.footer-cols{display:flex;gap:2.5rem;flex-wrap:wrap}
+.footer-col h5{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:.8rem}
+.footer-col a{display:block;font-size:.8rem;color:rgba(255,255,255,.48);text-decoration:none;margin-bottom:.4rem;transition:color .2s;padding:2px 0}
+.footer-col a:hover{color:#fff}
+.footer-bottom{padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.72rem;color:rgba(255,255,255,.32)}
+.status-badge{display:flex;align-items:center;gap:7px;font-size:.7rem;color:rgba(255,255,255,.32)}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+
+/* ═══════════════════════════════════
+   RESPONSIVE — TABLET (≤1024px)
+   ═══════════════════════════════════ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:0}
+  .hero-panel{display:none}
+  .over-grid{grid-template-columns:1fr;gap:3rem}
+  .hoe-inner{grid-template-columns:1fr;gap:3rem}
+  .hoe-visual{position:static}
+  .voordelen-grid{grid-template-columns:repeat(2,1fr)}
+  .afspraak-layout{grid-template-columns:1fr;gap:3rem}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .showcase-item{grid-template-columns:1fr;min-height:auto}
+  .showcase-item.reverse{direction:ltr}
+  .si-media{aspect-ratio:16/9}
+  .si-content{padding:40px 32px}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px}
+  .mosaic .photo-card:nth-child(1){grid-column:span 2;grid-row:span 1}
+  .pg-3{grid-template-columns:1fr 1fr}
+  .pg-col{grid-template-columns:1fr 1fr}
+  .pg-hero{grid-template-columns:1fr}
+  .pg-hero .photo-card:first-child{aspect-ratio:16/9}
+  .fade-left,.fade-right{opacity:0;transform:translateY(30px)}
+  .fade-left.visible,.fade-right.visible{transform:none}
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE — MOBILE (≤768px)
+   ═══════════════════════════════════ */
+@media(max-width:768px){
+  nav{padding:10px 4vw;min-height:56px}
+  .logo-text{font-size:.85rem}
+  .nav-links{display:none}
+  .nav-book{display:none}
+  
+  #hero{padding:88px 4vw 60px;min-height:auto}
+  .hero-eyebrow{font-size:.64rem}
+  .hero-trust{gap:1rem;margin-top:1.8rem}
+  .trust-item{font-size:.74rem}
+  .hero-ctas{gap:.6rem}
+  .btn-main,.btn-wa{padding:12px 18px;font-size:.88rem}
+
+  .sec{padding:56px 4vw}
+  
+  .over-blocks{gap:.7rem}
+  .over-block{padding:14px 16px}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .sb-num{font-size:1.65rem}
+
+  .voordelen-grid{grid-template-columns:1fr;gap:.8rem}
+  .voordeel{padding:20px 18px}
+
+  .contact-grid{grid-template-columns:1fr;gap:.8rem}
+  .contact-card{padding:20px 18px;flex-direction:row;align-items:flex-start;gap:14px}
+  .cc-icon{flex-shrink:0;margin-bottom:0;margin-top:2px}
+  .contact-card .cc-info{display:flex;flex-direction:column;gap:.3rem}
+
+  .frow-2{grid-template-columns:1fr}
+  .af-form{padding:24px 20px;border-radius:16px}
+
+  footer{padding:40px 4vw 28px}
+  .footer-top{flex-direction:column;gap:1.8rem}
+  .footer-cols{gap:1.8rem}
+
+  .pg-2{grid-template-columns:1fr;gap:10px}
+  .pg-3{grid-template-columns:1fr;gap:10px}
+  .pg-hero{grid-template-columns:1fr;gap:10px}
+  .pg-col{grid-template-columns:1fr;gap:10px}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:140px 140px;gap:8px}
+  .mosaic .photo-card:nth-child(1){grid-column:span 2;grid-row:span 1;aspect-ratio:16/9}
+  .si-content{padding:28px 20px}
+  .si-media{aspect-ratio:4/3}
+
+  .afspraak-layout{grid-template-columns:1fr;gap:2.5rem}
+  .af-info p{font-size:.84rem}
+  
+  .footer-cols{flex-direction:column;gap:1.5rem}
+  .footer-col{width:100%}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:.6rem}
+  
+  /* Smooth scroll adjustment for fixed nav */
+  section{scroll-margin-top:64px}
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤480px)
+   ═══════════════════════════════════ */
+@media(max-width:480px){
+  .logo-text{display:none}
+  .over-grid{gap:2.5rem}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .sb-num{font-size:1.5rem}
+  .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:120px 120px}
+  .photo-card-title{font-size:.9rem}
+  .ps-badges{gap:5px}
+  .ps-badge{font-size:.67rem;padding:4px 9px}
+  .hv-body{padding:12px}
+  .hv-info-row{padding:8px 10px}
+  .voordelen-grid{gap:.7rem}
+  .contact-card{flex-direction:column;gap:.5rem}
+}
+
+/* ── SAFE AREA / NOTCH SUPPORT ── */
+@supports(padding:max(0px)){
+  nav{padding-left:max(5vw,env(safe-area-inset-left));padding-right:max(5vw,env(safe-area-inset-right))}
+  footer{padding-left:max(5vw,env(safe-area-inset-left));padding-right:max(5vw,env(safe-area-inset-right));padding-bottom:max(30px,env(safe-area-inset-bottom))}
+}
+</style>
 </head>
 <body>
-  <h1>Precision T Solutions</h1>
+
+<!-- Drawer overlay -->
+<div class="nav-drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Slide-in drawer -->
+<nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="nd-label">Navigation</div>
+  <a href="#over" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>About Us</a>
+  <a href="#diensten" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>Services</a>
+  <a href="#hoe" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>How It Works</a>
+  <a href="#voordelen" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Benefits</a>
+  <a href="#contact" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Contact</a>
+  <div class="nd-label">Services</div>
+  <a href="#diensten" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>GPS Track & Trace</a>
+  <a href="#diensten" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>CAN-bus Connection</a>
+  <a href="#diensten" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><path d="M15 10l-4 4l6 6l4-16l-18 7l4 2l2 6l3-4"/></svg>Dashcam Installation</a>
+  <a href="#diensten" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 3h-8a2 2 0 00-2 2v2h12V5a2 2 0 00-2-2z"/></svg>CarPlay & Lighting</a>
+  <a href="#diensten" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Sound Systems</a>
+  <a href="#afspraak" class="nd-cta" onclick="closeDrawer()" style="margin-top:24px">
+    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book Appointment
+  </a>
+</nav>
+
+<!-- Top nav bar -->
+<nav id="nav" aria-label="Main navigation">
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <span class="logo-text">Precision Tech Solutions</span>
+  </a>
+  <div class="nav-links">
+    <a href="#over">About Us</a>
+    <a href="#diensten">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="#afspraak" class="nav-book">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book Appointment
+    </a>
+    <button class="burger" id="burgerBtn" onclick="toggleDrawer()" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Installation Specialist</div>
+      <h1><span class="h1-grey">Professional GPS<br>installation </span><span class="h1-cyan">on-site</span><span class="h1-grey"><br>by appointment</span></h1>
+      <p class="hero-sub">We install GPS trackers, dashcams, CarPlay, sound systems and lighting in cars, trucks, boats, cranes and heavy machinery. Expert installation — ready to use immediately.</p>
+      <div class="hero-ctas">
+        <a href="#afspraak" class="btn-main">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Book an Appointment
+        </a>
+        <a href="https://wa.me/59996655017" class="btn-wa">
+          <svg viewBox="0 0 24 24" fill="#2ECC71"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.304A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 11.999 2z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fast service</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>All vehicle types</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional finish</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="over" class="sec">
+  <div class="inner">
+    <div class="over-grid">
+      <div>
+        <div class="tag fade-up">About Precision Tech Solutions</div>
+        <h2 class="fade-up d1">Your installation partner<br>for GPS systems</h2>
+        <p class="lead fade-up d2">PTS specialises in the professional installation of track & trace systems. We work with the GPS provider of your choice and ensure a clean, expert fit in any type of vehicle, boat or machine.</p>
+        <div class="over-blocks">
+          <div class="over-block fade-up d2"><div class="ob-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div class="ob-text"><h4>Samenwerking met GPS-bedrijven</h4><p>We hebben een samenwerking met diverse GPS-bedrijven. Geen gedoe — gewoon vakkundige installatie.</p></div></div>
+          <div class="over-block fade-up d3"><div class="ob-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="ob-text"><h4>Craftsmanship & reliability</h4><p>Every installation is neatly finished and thoroughly tested before the vehicle is returned.</p></div></div>
+          <div class="over-block fade-up d4"><div class="ob-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="ob-text"><h4>Minimal vehicle downtime</h4><p>Fast execution so your vehicles are off the road as little as possible. Most installations are completed the same day.</p></div></div>
+        </div>
+      </div>
+      <div class="over-visual fade-up d1">
+        <div class="stat-row">
+          <div class="stat-box"><div class="sb-num">500<span>+</span></div><div class="sb-label">Installations completed</div></div>
+          <div class="stat-box"><div class="sb-num">&lt;45<span>min</span></div><div class="sb-label">Avg. installation time</div></div>
+          <div class="stat-box"><div class="sb-num">8<span>+</span></div><div class="sb-label">Years of experience</div></div>
+          <div class="stat-box"><div class="sb-num">100<span>%</span></div><div class="sb-label">Tested before handover</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pg-hero">
+      <div class="photo-card scale-in">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="GPS device installation in vehicle dashboard" loading="lazy">
+        <div class="photo-card-overlay"><div class="photo-card-label">GPS Tracking</div><div class="photo-card-title">Expert fitment, every vehicle</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="photo-card scale-in d1" style="flex:1">
+          <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80" alt="Professional car installation" loading="lazy">
+          <div class="photo-card-overlay"><div class="photo-card-label">On-site</div><div class="photo-card-title">We come to you</div></div>
+        </div>
+        <div class="photo-card scale-in d2" style="flex:1">
+          <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=600&q=80" alt="Fleet of trucks" loading="lazy">
+          <div class="photo-card-overlay"><div class="photo-card-label">Fleet</div><div class="photo-card-title">All vehicle types</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="diensten" style="padding:0;background:#fff">
+  <div style="padding:70px 5vw 36px;max-width:1160px;margin:0 auto">
+    <div class="tag fade-up">What we install</div>
+    <h2 class="fade-up d1" style="color:var(--text)">Our installation services</h2>
+    <p class="lead fade-up d2">From OBD port to hardwired CAN-bus connection — we install any GPS system in any type of vehicle, boat or machine.</p>
+  </div>
+
+  <div class="showcase-item fade-up">
+    <div class="si-media">
+      <div class="si-num">01</div>
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&q=80" alt="GPS tracker device installation" loading="lazy">
+      <div class="si-media-overlay"></div>
+    </div>
+    <div class="si-content">
+      <div class="si-tag">GPS Tracking</div>
+      <h3>GPS Track & Trace Installation</h3>
+      <p>Installation of GPS tracker devices in all vehicle and boat types. From simple plug & play to hardwired — neatly finished and completely hidden.</p>
+      <div class="si-tags"><span class="si-pill">OBD2 plug-in</span><span class="si-pill">Hardwired</span><span class="si-pill">Hidden install</span></div>
+    </div>
+  </div>
+
+  <div class="showcase-item reverse fade-up" style="background:var(--bg2)">
+    <div class="si-media">
+      <div class="si-num">02</div>
+      <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=900&q=80" alt="Truck cab CAN-bus wiring" loading="lazy">
+      <div class="si-media-overlay"></div>
+    </div>
+    <div class="si-content" style="background:var(--bg2)">
+      <div class="si-tag">CAN-bus</div>
+      <h3>CAN-bus Connection</h3>
+      <p>Direct connection to the vehicle CAN-bus for driving data such as speed, RPM, fuel and fault codes — when required by your fleet system.</p>
+      <div class="si-tags"><span class="si-pill">Trucks & HGV</span><span class="si-pill">Construction machinery</span><span class="si-pill">Cranes</span></div>
+    </div>
+  </div>
+
+  <div class="showcase-item fade-up">
+    <div class="si-media">
+      <div class="si-num">03</div>
+      <img src="https://images.unsplash.com/photo-1511184811833-ef6a5bef0b6b?w=900&q=80" alt="Fleet of vehicles in depot" loading="lazy">
+      <div class="si-media-overlay"></div>
+    </div>
+    <div class="si-content">
+      <div class="si-tag">Fleet</div>
+      <h3>Fleet Vehicle Installation</h3>
+      <p>Efficient batch installation for lease and transport companies with multiple vehicles. We schedule everything with minimal downtime for your fleet.</p>
+      <div class="si-tags"><span class="si-pill">Lease companies</span><span class="si-pill">Transport companies</span><span class="si-pill">Batch installation</span></div>
+    </div>
+  </div>
+
+  <div class="showcase-item reverse fade-up" style="background:var(--lb)">
+    <div class="si-media">
+      <div class="si-num">04</div>
+      <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80" alt="Fleet management software on tablet" loading="lazy">
+      <div class="si-media-overlay"></div>
+    </div>
+    <div class="si-content" style="background:var(--lb)">
+      <div class="si-tag">Integration</div>
+      <h3>Connection to Existing Fleet System</h3>
+      <p>Already have a fleet management platform? We ensure the new device connects correctly and communicates with your existing system.</p>
+      <div class="si-tags"><span class="si-pill">System integration</span><span class="si-pill">Configuration</span><span class="si-pill">Testing & validation</span></div>
+    </div>
+  </div>
+
+  <div class="showcase-item fade-up">
+    <div class="si-media">
+      <div class="si-num">05</div>
+      <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=900&q=80" alt="Dashcam mounted on windscreen" loading="lazy">
+      <div class="si-media-overlay"></div>
+    </div>
+    <div class="si-content">
+      <div class="si-tag">Dashcams</div>
+      <h3>Dashcam Installation</h3>
+      <p>Professional fitting of front, rear and cabin dashcams in any vehicle. Hardwired for permanent power, neatly routed cables and clean finish inside the cabin.</p>
+      <div class="si-tags"><span class="si-pill">Front & rear cam</span><span class="si-pill">Hardwired</span><span class="si-pill">Fleet dashcams</span></div>
+    </div>
+  </div>
+
+  <div class="showcase-item reverse fade-up" style="background:var(--navy)">
+    <div class="si-media">
+      <div class="si-num">06</div>
+      <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=900&q=80" alt="CarPlay screen in modern car" loading="lazy">
+      <div class="si-media-overlay"></div>
+    </div>
+    <div class="si-content showcase-dark" style="background:var(--navy)">
+      <div class="si-tag" style="color:var(--cyan)">CarPlay & Lighting</div>
+      <h3 style="color:#fff">CarPlay, Lighting<br>& Accessories</h3>
+      <p style="color:rgba(255,255,255,.62)">We install Apple CarPlay and Android Auto units, LED lighting upgrades, auxiliary lighting and all electrical vehicle accessories — professionally wired and integrated.</p>
+      <div class="si-tags">
+        <span class="si-pill" style="background:rgba(0,183,255,.12);border-color:rgba(0,183,255,.25);color:rgba(255,255,255,.8)">Apple CarPlay</span>
+        <span class="si-pill" style="background:rgba(0,183,255,.12);border-color:rgba(0,183,255,.25);color:rgba(255,255,255,.8)">Android Auto</span>
+        <span class="si-pill" style="background:rgba(0,183,255,.12);border-color:rgba(0,183,255,.25);color:rgba(255,255,255,.8)">LED lighting</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="showcase-item fade-up">
+    <div class="si-media">
+      <div class="si-num">07</div>
+      <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=900&q=80" alt="Car audio speakers and amplifier" loading="lazy">
+      <div class="si-media-overlay"></div>
+    </div>
+    <div class="si-content">
+      <div class="si-tag">Sound Systems</div>
+      <h3>Sound System Installation</h3>
+      <p>Upgrade your vehicle audio with a professionally installed sound system. From head units and amplifiers to subwoofers and speaker upgrades — clean, quality install every time.</p>
+      <div class="si-tags"><span class="si-pill">Head units</span><span class="si-pill">Amplifiers</span><span class="si-pill">Speaker upgrades</span></div>
+    </div>
+  </div>
+
+  <!-- Vehicle types strip -->
+  <div style="padding:56px 5vw;background:var(--bg2)">
+    <div style="max-width:1160px;margin:0 auto">
+      <div class="tag fade-up" style="justify-content:center;display:flex">All vehicle types</div>
+      <h2 class="fade-up d1" style="text-align:center;color:var(--text);margin-bottom:.5rem">Cars, trucks, boats<br>and heavy machinery</h2>
+      <p style="text-align:center;color:var(--text-3);font-size:.92rem;margin:0 auto 2.8rem;max-width:480px" class="fade-up d2">If it floats, drives or works — we install it.</p>
+      <div class="mosaic">
+        <div class="photo-card scale-in">
+          <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80" alt="Truck fleet" loading="lazy">
+          <div class="photo-card-overlay"><div class="photo-card-label">Trucks & HGV</div><div class="photo-card-title">Full fleet coverage</div></div>
+        </div>
+        <div class="photo-card scale-in d1">
+          <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=600&q=80" alt="Boat on water" loading="lazy">
+          <div class="photo-card-overlay"><div class="photo-card-label">Boats</div><div class="photo-card-title">GPS for vessels</div></div>
+        </div>
+        <div class="photo-card scale-in d2">
+          <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt="Construction crane on site" loading="lazy">
+          <div class="photo-card-overlay"><div class="photo-card-label">Cranes & Machinery</div><div class="photo-card-title">Heavy equipment</div></div>
+        </div>
+        <div class="photo-card scale-in d3">
+          <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80" alt="BMW car" loading="lazy">
+          <div class="photo-card-overlay"><div class="photo-card-label">Cars & Vans</div><div class="photo-card-title">Clean install in every car</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="hoe" class="sec">
+  <div class="inner">
+    <div class="tag fade-up">How it works</div>
+    <h2 class="fade-up d1">How it works</h2>
+    <p class="lead fade-up d2">From first contact to a vehicle with an active GPS system — fast, clear and hassle-free.</p>
+    <div class="hoe-inner">
+      <div class="steps-list fade-up d1">
+        <div class="step-item">
+          <div class="step-left"><div class="step-circle">1</div><div class="step-line"></div></div>
+          <div class="step-content">
+            <h4>Request an appointment</h4>
+            <p>Fill in our contact form or send a WhatsApp message. Let us know how many vehicles, the type and your preferred date.</p>
+            <span class="step-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Online or WhatsApp</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-left"><div class="step-circle">2</div><div class="step-line"></div></div>
+          <div class="step-content">
+            <h4>We schedule the installation</h4>
+            <p>We coordinate with your GPS provider, ensure the right device is available and confirm the date and location.</p>
+            <span class="step-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Confirmation within 24h</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-left"><div class="step-circle">3</div><div class="step-line"></div></div>
+          <div class="step-content">
+            <h4>Installation at your location</h4>
+            <p>Our technician comes to your business location, depot or car park. Expert installation with a clean finish — no messy wiring.</p>
+            <span class="step-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Always at your location</span>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-left"><div class="step-circle">4</div></div>
+          <div class="step-content">
+            <h4>System ready immediately</h4>
+            <p>After installation we fully test everything. The vehicle is back in service the same day with a working GPS system.</p>
+            <span class="step-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2ECC71" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Immediately operational</span>
+          </div>
+        </div>
+      </div>
+      <div class="hoe-visual fade-up d2">
+        <div class="hv-top">
+          <div class="hv-dot-row"><div class="hv-dot" style="background:#FF453A"></div><div class="hv-dot" style="background:#F39C12"></div><div class="hv-dot" style="background:#2ECC71"></div></div>
+          <div class="hv-title">INSTALLATION OVERVIEW</div>
+        </div>
+        <div class="hv-body">
+          <div class="hv-info-row"><span class="hir-label">Client</span><span class="hir-val">Transport Ltd — 8 vehicles</span></div>
+          <div class="hv-info-row"><span class="hir-label">Location</span><span class="hir-val">Willemstad, on-site</span></div>
+          <div class="hv-info-row"><span class="hir-label">Type</span><span class="hir-val">Trucks + 2 vans</span></div>
+          <div class="hv-info-row"><span class="hir-label">GPS system</span><span class="hir-val">Via client provider</span></div>
+          <div class="hv-info-row"><span class="hir-label">Status</span><span class="hir-val" style="color:var(--green);font-weight:500">✓ Scheduled · Mon 09:00</span></div>
+          <div class="hv-timeline">
+            <div class="ht-label">Installation progress</div>
+            <div class="ht-bar-row"><span class="ht-name">Booking</span><div class="ht-track"><div class="ht-fill" style="width:100%"></div></div><span class="ht-time">✓</span></div>
+            <div class="ht-bar-row"><span class="ht-name">Planning</span><div class="ht-track"><div class="ht-fill" style="width:100%"></div></div><span class="ht-time">✓</span></div>
+            <div class="ht-bar-row"><span class="ht-name">Install</span><div class="ht-track"><div class="ht-fill" style="width:65%"></div></div><span class="ht-time">65%</span></div>
+            <div class="ht-bar-row"><span class="ht-name">Handover</span><div class="ht-track"><div class="ht-fill" style="width:0%"></div></div><span class="ht-time">—</span></div>
+          </div>
+          <div class="hv-note"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>6 of 8 vehicles done — same day</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="voordelen" class="sec">
+  <div class="inner">
+    <div style="text-align:center;max-width:540px;margin:0 auto 1rem">
+      <div class="tag fade-up" style="justify-content:center">Why PTS</div>
+      <h2 class="fade-up d1">Craftsmanship that counts</h2>
+      <p class="lead fade-up d2" style="margin:.8rem auto 0;color:var(--text-3)">No hidden costs, no poor finish, no hassle. Just a reliable installer who does the job right.</p>
+    </div>
+    <div class="voordelen-grid">
+      <div class="voordeel fade-up d1"><div class="vd-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Fast turnaround</h3><p>Most installations are completed the same day. We plan efficiently so your vehicles are off the road as little as possible.</p></div>
+      <div class="voordeel fade-up d2"><div class="vd-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div><h3>Professional installation</h3><p>Clean wiring, hidden installation and correct mounting. We leave no mess behind.</p></div>
+      <div class="voordeel fade-up d3"><div class="vd-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Tested before handover</h3><p>Every system is fully tested and validated before the vehicle is returned. No surprises afterwards.</p></div>
+      <div class="voordeel fade-up d1"><div class="vd-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4a2 2 0 012 2v6a2 2 0 01-2 2h-4M12 12H1"/><circle cx="19" cy="18" r="2"/><circle cx="6" cy="21" r="2"/></svg></div><h3>All vehicle types</h3><p>Cars, vans, trucks, buses, boats, cranes and machinery. If it floats, drives or works — we install it.</p></div>
+      <div class="voordeel fade-up d2"><div class="vd-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Samenwerking met GPS-bedrijven</h3><p>We hebben een samenwerking met diverse GPS-bedrijven. Geen verplicht pakket, geen lock-in.</p></div>
+      <div class="voordeel fade-up d3"><div class="vd-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>Personal service</h3><p>Direct contact with the installer. No call centre, no queues — just fast and clear communication.</p></div>
+    </div>
+
+    <div class="pg-3" style="margin-top:3rem">
+      <div class="photo-card scale-in d1">
+        <img src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=700&q=80" alt="Technician installing device in car" loading="lazy">
+        <div class="photo-card-overlay"><div class="photo-card-label">Expert install</div><div class="photo-card-title">Clean & hidden wiring</div></div>
+      </div>
+      <div class="photo-card scale-in d2">
+        <img src="https://images.unsplash.com/photo-1532939163844-547f958e91b4?w=700&q=80" alt="GPS map tracking on screen" loading="lazy">
+        <div class="photo-card-overlay"><div class="photo-card-label">Live tracking</div><div class="photo-card-title">Know where every asset is</div></div>
+      </div>
+      <div class="photo-card scale-in d3">
+        <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=700&q=80" alt="Boat on water" loading="lazy">
+        <div class="photo-card-overlay"><div class="photo-card-label">Marine</div><div class="photo-card-title">GPS for vessels</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK APPOINTMENT -->
+<section id="afspraak" class="sec">
+  <div class="inner">
+    <div class="afspraak-layout">
+      <div class="af-info fade-up">
+        <div class="tag">Book an appointment</div>
+        <h2>Schedule your<br>installation</h2>
+        <p>Fill in the form and we will contact you within 24 hours to schedule the installation at your location.</p>
+        <div class="af-why">
+          <div class="af-why-item"><div class="af-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Free consultation</div>
+          <div class="af-why-item"><div class="af-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Installation at your location</div>
+          <div class="af-why-item"><div class="af-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>All vehicle and boat types welcome</div>
+          <div class="af-why-item"><div class="af-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Same day completion (in most cases)</div>
+          <div class="af-why-item"><div class="af-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>No mandatory GPS provider</div>
+        </div>
+        <div style="margin-top:1.6rem">
+          <a href="https://wa.me/59996655017" class="btn-wa" style="align-self:flex-start;display:inline-flex">
+            <svg viewBox="0 0 24 24" fill="#2ECC71" width="17" height="17"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.304A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 11.999 2z"/></svg>
+            Prefer WhatsApp? Message us directly
+          </a>
+        </div>
+      </div>
+      <div class="af-form fade-up d2">
+        <div class="af-form-title">Request an installation</div>
+        <div class="af-form-sub">We will contact you within 24 hours.</div>
+        <div class="frow-2">
+          <div class="frow"><label>First name</label><input type="text" placeholder="John" autocomplete="given-name"></div>
+          <div class="frow"><label>Last name</label><input type="text" placeholder="Smith" autocomplete="family-name"></div>
+        </div>
+        <div class="frow"><label>Company name</label><input type="text" placeholder="Your company name" autocomplete="organization"></div>
+        <div class="frow"><label>Phone number</label><input type="tel" placeholder="+5999 123 4567" autocomplete="tel"></div>
+        <div class="frow"><label>Email address</label><input type="email" placeholder="you@company.com" autocomplete="email"></div>
+        <div class="frow-2">
+          <div class="frow">
+            <label>Number of vehicles</label>
+            <select><option value="" disabled selected>Select</option><option>1 vehicle</option><option>2 – 5 vehicles</option><option>6 – 20 vehicles</option><option>20+ vehicles</option></select>
+          </div>
+          <div class="frow">
+            <label>Vehicle type</label>
+            <select><option value="" disabled selected>Select</option><option>Car(s)</option><option>Vans</option><option>Trucks</option><option>Buses</option><option>Boats</option><option>Cranes / Machinery</option><option>Mixed fleet</option></select>
+          </div>
+        </div>
+        <div class="frow"><label>Service needed</label>
+          <select><option value="" disabled selected>Select a service</option><option>GPS Track & Trace</option><option>CAN-bus Connection</option><option>Dashcam Installation</option><option>CarPlay / Android Auto</option><option>Lighting / Accessories</option><option>Sound System</option><option>Multiple services</option></select>
+        </div>
+        <div class="frow"><label>Preferred date</label><input type="date" autocomplete="off"></div>
+        <div class="frow"><label>Notes (optional)</label><textarea placeholder="E.g. location, GPS system type, special requirements..."></textarea></div>
+        <button class="fsubmit" onclick="submitForm(event)">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Request Appointment
+        </button>
+        <p class="fnote">No obligations. We confirm your request within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="inner">
+    <div style="text-align:center;max-width:500px;margin:0 auto 1rem">
+      <div class="tag fade-up" style="justify-content:center">Contact</div>
+      <h2 class="fade-up d1">Get in touch</h2>
+      <p class="lead fade-up d2" style="margin:.8rem auto 0">Questions? We respond quickly via WhatsApp, email or use the form below.</p>
+    </div>
+    <div class="contact-grid">
+      <a href="https://wa.me/59996655017" class="contact-card fade-up d1">
+        <div class="cc-icon" style="background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.25)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#2ECC71"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.304A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.522 2 11.999 2z"/></svg>
+        </div>
+        <div class="cc-info">
+          <h4>WhatsApp</h4>
+          <p>Fastest way to reach us. Direct response during working hours.</p>
+          <span>+5999 665 5017</span>
+        </div>
+      </a>
+      <a href="mailto:info@precisiontsolutions.com" class="contact-card fade-up d2">
+        <div class="cc-icon" style="background:rgba(0,183,255,.15);border:1px solid rgba(0,183,255,.3)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#00B7FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="cc-info">
+          <h4>Email</h4>
+          <p>For quotes, questions and booking requests. We respond within 24 hours.</p>
+          <span>info@precisiontsolutions.com</span>
+        </div>
+      </a>
+      <a href="#" class="contact-card fade-up d3">
+        <div class="cc-icon" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="cc-info">
+          <h4>Location</h4>
+          <p>We always come to you. Installation at your business location, depot or car park.</p>
+          <span>Willemstad, Curaçao</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Contact form -->
+    <div style="margin-top:3.5rem">
+      <div style="text-align:center;max-width:480px;margin:0 auto 2.2rem">
+        <div class="tag fade-up" style="justify-content:center">Send a message</div>
+        <h2 class="fade-up d1" style="color:#fff;font-size:clamp(1.5rem,2.5vw,2rem)">Send us a message</h2>
+        <p style="color:rgba(255,255,255,.65);font-size:.9rem;margin-top:.6rem" class="fade-up d2">Fill in the form and we will get back to you within 24 hours.</p>
+      </div>
+      <div class="contact-form-wrap fade-up d2">
+        <div class="frow-2">
+          <div class="frow"><label style="color:rgba(255,255,255,.55)">First name</label><input type="text" placeholder="John" autocomplete="given-name" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#fff"></div>
+          <div class="frow"><label style="color:rgba(255,255,255,.55)">Last name</label><input type="text" placeholder="Smith" autocomplete="family-name" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#fff"></div>
+        </div>
+        <div class="frow"><label style="color:rgba(255,255,255,.55)">Email address</label><input type="email" placeholder="you@company.com" autocomplete="email" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#fff"></div>
+        <div class="frow"><label style="color:rgba(255,255,255,.55)">Phone number</label><input type="tel" placeholder="+5999 123 4567" autocomplete="tel" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#fff"></div>
+        <div class="frow"><label style="color:rgba(255,255,255,.55)">Subject</label>
+          <select style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.7)">
+            <option value="" disabled selected>Select a subject</option>
+            <option>GPS Installation</option>
+            <option>Dashcam Installation</option>
+            <option>CarPlay / Android Auto</option>
+            <option>Sound System</option>
+            <option>Lighting / Accessories</option>
+            <option>Fleet installation</option>
+            <option>General question</option>
+          </select>
+        </div>
+        <div class="frow"><label style="color:rgba(255,255,255,.55)">Message</label><textarea placeholder="How can we help you?" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#fff;height:110px;min-height:110px"></textarea></div>
+        <button class="fsubmit" onclick="submitContact(event)" style="background:var(--cyan)">
+          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+        <p class="fnote" style="color:rgba(255,255,255,.35)">We respond within 24 hours. No spam, ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <span class="logo-text">Precision Tech Solutions</span>
+        </a>
+        <p>Your professional installation partner for GPS track & trace systems.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="#diensten">GPS Track & Trace Installation</a>
+          <a href="#diensten">CAN-bus Connection</a>
+          <a href="#diensten">Fleet Installation</a>
+          <a href="#diensten">Dashcam Installation</a>
+          <a href="#diensten">CarPlay & Lighting</a>
+          <a href="#diensten">Sound Systems</a>
+        </div>
+        <div class="footer-col">
+          <h5>Industries</h5>
+          <a href="#">Lease companies</a>
+          <a href="#">Transport companies</a>
+          <a href="#">Construction companies</a>
+          <a href="#">Fleet owners</a>
+          <a href="#">Marine / Boats</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#over">About us</a>
+          <a href="#afspraak">Book appointment</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Privacy policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Precision Tech Solutions. All rights reserved.</p>
+      <div class="status-badge"><span class="status-dot"></span>Available for appointments</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Scroll observer ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.06, rootMargin: '0px 0px -40px 0px'});
+
+document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in').forEach(el => observer.observe(el));
+
+// ── Nav scroll ──
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').style.background =
+    window.scrollY > 30 ? 'rgba(11,31,58,.97)' : 'rgba(11,31,58,.88)';
+}, {passive:true});
+
+// ── Drawer ──
+function toggleDrawer() {
+  const drawer = document.getElementById('navDrawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const btn = document.getElementById('burgerBtn');
+  const isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    closeDrawer();
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    document.body.classList.add('drawer-open');
+    document.getElementById('navDrawer').setAttribute('aria-hidden','false');
+  }
+}
+function closeDrawer() {
+  document.getElementById('navDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.getElementById('burgerBtn').classList.remove('open');
+  document.getElementById('burgerBtn').setAttribute('aria-expanded','false');
+  document.body.classList.remove('drawer-open');
+  document.getElementById('navDrawer').setAttribute('aria-hidden','true');
+}
+
+// Close drawer on Escape
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDrawer(); });
+
+// ── Smooth scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if(href === '#') return;
+    const t = document.querySelector(href);
+    if (t) {
+      e.preventDefault();
+      closeDrawer();
+      setTimeout(() => t.scrollIntoView({behavior:'smooth',block:'start'}), 50);
+    }
+  });
+});
+
+// ── Date minimum ──
+const di = document.querySelector('input[type="date"]');
+if (di) {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  di.min = d.toISOString().split('T')[0];
+}
+
+// ── Contact form ──
+function submitContact(e) {
+  const btn = e.target;
+  btn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0B1F3A" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Message sent!';
+  btn.style.background = '#2ECC71';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Message';
+    btn.style.background = 'var(--cyan)';
+    btn.disabled = false;
+  }, 4000);
+}
+
+// ── Booking form ──
+function submitForm(e) {
+  const btn = e.target;
+  btn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0B1F3A" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Request sent — we will call you back!';
+  btn.style.background = '#2ECC71';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#0B1F3A" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Request Appointment';
+    btn.style.background = 'var(--cyan)';
+    btn.disabled = false;
+  }, 4000);
+}
+</script>
 </body>
 </html>
